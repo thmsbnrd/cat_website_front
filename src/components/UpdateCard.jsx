@@ -4,6 +4,8 @@ import { Form, Button, Col } from "react-bootstrap";
 import "../style/AddCard.css";
 
 function UpdateCard({ match }) {
+  const [show, setShow] = useState(false);
+
   const [cat, setCat] = useState([]);
 
   const getCatData = () => {
