@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch } from "react-router-dom";
 import NavbarSite from "./components/NavbarSite";
 import CardList from "./components/CardList";
+import AddCard from "./components/AddCard";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <NavbarSite />
       <Switch>
         <Route exact path="/" component={CardList} />
+        <Route path="/add" component={AddCard} />
       </Switch>
     </div>
   );
