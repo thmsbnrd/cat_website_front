@@ -1,23 +1,33 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 import "../style/AddCard.css";
 
 function AddCard() {
   return (
     <div className="AddCard">
       <Form className="addCardForm">
-        <Form.Group controlId="formModalName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter cat's name" />
-        </Form.Group>
-        <Form.Group controlId="formModalName">
-          <Form.Label>Breed</Form.Label>
-          <Form.Control type="text" placeholder="Dropdown breed" />
-        </Form.Group>
-        <Form.Group controlId="formModalName">
-          <Form.Label>Age</Form.Label>
-          <Form.Control type="text" placeholder="Enter cat's name" />
-        </Form.Group>
+        <Form.Row>
+          <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter Cat's name" />
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridState" xs={4}>
+            <Form.Label>Breed</Form.Label>
+            <Form.Control as="select" defaultValue="Choose...">
+              <option>Choose...</option>
+              <option>American Shorthair</option>
+              <option>Siamese</option>
+              <option>Sphynx</option>
+            </Form.Control>
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridPassword" xs={2}>
+            <Form.Label>Age</Form.Label>
+            <Form.Control type="number" min="1" max="50" />
+          </Form.Group>
+        </Form.Row>
+
         <Form.Group controlId="formModalDescription">
           <Form.Label>Description</Form.Label>
           <Form.Control
@@ -26,6 +36,7 @@ function AddCard() {
             rows="3"
           />
         </Form.Group>
+
         <Form.Group controlId="formModalPicture">
           <Form.Label>Picture</Form.Label>
           <Form.Control
