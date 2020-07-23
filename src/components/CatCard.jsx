@@ -4,6 +4,7 @@ import "../style/CatCard.css";
 
 function CatCard({ data, index, removeCat }) {
   const [show, setShow] = useState(false);
+
   const handleClose = () => {
     setShow(false);
   };
@@ -27,7 +28,7 @@ function CatCard({ data, index, removeCat }) {
             </small>
           </Card.Title>
           <Card.Text>{data.description}</Card.Text>
-          <Button variant="outline-primary" size="sm">
+          <Button href={`/update/${index}`} variant="outline-primary" size="sm">
             Edit
           </Button>{" "}
           <Button

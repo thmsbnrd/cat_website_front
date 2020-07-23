@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Form, Button, Col } from "react-bootstrap";
 import "../style/AddCard.css";
 
-function AddCard() {
+function UpdateCard({ match }) {
+  const [cat, setCat] = useState([]);
+
+  const getCatData = () => {
+    const { id } = match.params;
+    const url = `http://localhost:3000/api/cats/${id}`;
+    axios
+      .get(url)
+      .then((response) => response.data)
+      .then((data) => setCat(data))
+      .catch();
+  };
+
+  useEffect(() => {
+    getCatData();
+  }, []);
+
   return (
-    <div className="AddCard">
+    <div className="UpdateCard">
       <Form className="addCardForm">
-        <h1>Add a brand new cat to the list!</h1>
+        <h1>{`Update ${cat.name} informations`}</h1>
         <br />
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
@@ -50,12 +67,12 @@ function AddCard() {
           </Form.Text>
         </Form.Group>
 
-        <Button variant="success" type="submit">
-          Submit
+        <Button variant="primary" type="submit">
+          Update
         </Button>
       </Form>
     </div>
   );
 }
 
-export default AddCard;
+export default UpdateCard;
