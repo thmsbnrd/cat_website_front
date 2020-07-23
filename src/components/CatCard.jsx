@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Card, Button, Modal } from "react-bootstrap";
 import "../style/CatCard.css";
 
-function CatCard({ data, deletecard, removeCat }) {
+function CatCard({ data, index, removeCat }) {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
   };
   const handleSubmit = () => {
-    removeCat(data.id);
+    removeCat(index);
     setShow(false);
   };
   return (
