@@ -1,8 +1,16 @@
-import React from "react";
-import { Card, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Button, Modal } from "react-bootstrap";
 import "../style/CatCard.css";
 
-function CatCard({ data, deletecard }) {
+function CatCard({ data, deletecard, removeCat }) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleSubmit = () => {
+    removeCat(data.id);
+    setShow(false);
+  };
   return (
     <div className="CatCard">
       <Card className="">
@@ -25,7 +33,7 @@ function CatCard({ data, deletecard }) {
           <Button
             variant="outline-danger"
             size="sm"
-            onClick={() => deletecard(data.id)}
+            onClick={() => setShow(true)}
           >
             Delete
           </Button>{" "}
@@ -34,6 +42,25 @@ function CatCard({ data, deletecard }) {
           </Button>
         </Card.Body>
       </Card>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Body>
+          <h4>
+            You're about to delete {data.name}, <br /> are you sure ?
+          </h4>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handleClose}>Close</Button>
+          <Button variant="danger" onClick={handleSubmit}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
