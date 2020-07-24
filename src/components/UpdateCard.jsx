@@ -46,8 +46,8 @@ function UpdateCard({ match }) {
     const url = `http://localhost:3000/api/cats/${Number(id)}`;
     console.log(url);
     axios
-      .put(url)
-      .then((response) => response.data)
+      .put(url, userInput)
+      .then((response) => response.data[0])
       .catch((event) => {
         alert(`Error while updating cat profile : ${event.message}`);
       });
@@ -143,7 +143,7 @@ function UpdateCard({ match }) {
           <h4>{userInput.name} has been updated!</h4>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <Button href={`/`} variant="primary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
