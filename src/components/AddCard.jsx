@@ -85,6 +85,7 @@ const AddCard = () => {
               <option>American Shorthair</option>
               <option>Siamese</option>
               <option>Sphynx</option>
+              <option>Main Coon</option>
             </Form.Control>
           </Form.Group>
 

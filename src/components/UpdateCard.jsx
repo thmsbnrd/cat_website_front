@@ -6,7 +6,7 @@ import "../style/AddCard.css";
 
 function UpdateCard({ match }) {
   const { id } = match.params;
-  console.log(typeof id);
+
   const [show, setShow] = useState(false);
 
   // const [cat, setCat] = useState([]);
@@ -44,7 +44,6 @@ function UpdateCard({ match }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = `http://localhost:3000/api/cats/${Number(id)}`;
-    console.log(url);
     axios
       .put(url, userInput)
       .then((response) => response.data[0])
@@ -86,6 +85,7 @@ function UpdateCard({ match }) {
               <option>American Shorthair</option>
               <option>Siamese</option>
               <option>Sphynx</option>
+              <option>Main Coon</option>
             </Form.Control>
           </Form.Group>
 
