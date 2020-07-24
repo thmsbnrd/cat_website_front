@@ -23,7 +23,7 @@ function CatCard({ data, index, removeCat }) {
               {data.emoji}
             </span>
             <br />
-            <small class="text-muted">
+            <small className="text-muted">
               {data.breed}, {data.age}
             </small>
           </Card.Title>
